@@ -7,6 +7,9 @@
 //
 
 #import "NSObject+Additional.h"
+#import <objc/runtime.h>
+
+static void *strKey = &strKey;
 
 @implementation NSObject (Additional)
 
@@ -16,6 +19,14 @@
 
 + (void)sayWorld {
     NSLog(@"world");
+}
+
+- (void)setCloudColor:(NSString *)cloudColor {
+    objc_setAssociatedObject(self, &strKey, cloudColor, OBJC_ASSOCIATION_COPY);
+}
+
+- (NSString *)cloudColor {
+    return objc_getAssociatedObject(self, &strKey);
 }
 
 @end

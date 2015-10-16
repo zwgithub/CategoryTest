@@ -18,9 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSString *str = [NSString new];
+    str.cloudColor = @"red";
+    NSLog(@"str.cloudColor:%@",str.cloudColor);
+    
     [str sayHello];
     [NSString sayWorld];
-    str.cloudColor = [UIColor redColor];
+
     return YES;
 }
 
